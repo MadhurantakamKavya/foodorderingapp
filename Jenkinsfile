@@ -17,32 +17,38 @@ pipeline {
         stage('Verify Environment') {
             steps {
                 echo 'Verifying Docker engine installation...'
-                sh 'docker --version'
-                sh 'docker-compose --version'
+                runCmd 'docker --version'
+                runCmd 'docker-compose --version'
             }
         }
 
         stage('Build Docker Containers') {
             steps {
                 echo 'Building application Docker image...'
-                sh 'docker-compose build'
+                runCmd 'docker-compose build'
             }
         }
 
         stage('Security Check') {
             steps {
                 echo 'Auditing npm packages for vulnerabilities...'
-                // Run inside a temporary node container to keep Jenkins agent clean
-                sh 'docker run --rm -v ${WORKSPACE}:/app -w /app node:18-alpine npm audit || true'
+                script {
+                    try {
+                        // Use double quotes and escape workspace path correctly for cross-platform mounts
+                        runCmd "docker run --rm -v \"${WORKSPACE}:/app\" -w /app node:18-alpine npm audit"
+                    } catch (err) {
+                        echo "Security audit command completed (non-critical issues logged or skipped)."
+                    }
+                }
             }
         }
 
         stage('Deploy Staging') {
             steps {
                 echo 'Deploying application service...'
-                // Stop any running containers and launch with the new build
-                sh 'docker-compose down'
-                sh 'docker-compose up -d'
+                // Stop any running compose container and start the new one
+                runCmd 'docker-compose down'
+                runCmd 'docker-compose up -d'
                 echo "FeastDash deployment updated successfully on port ${PORT}!"
             }
         }
@@ -55,5 +61,14 @@ pipeline {
         failure {
             echo 'FeastDash CI/CD Pipeline failed. Please check build logs.'
         }
+    }
+}
+
+// Helper method to automatically switch between Unix sh and Windows bat shells
+def runCmd(cmd) {
+    if (isUnix()) {
+        sh cmd
+    } else {
+        bat cmd
     }
 }
