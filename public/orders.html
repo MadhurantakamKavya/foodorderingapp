@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Orders - FeastDash</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Feast<span>Dash</span></a>
+      <nav>
+        <ul id="nav-links">
+          <!-- Populated by JS -->
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="header-cart-btn">
+          🛒 <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Orders Content -->
+  <main class="container" style="padding: 40px 0; flex:1;">
+    
+    <!-- Tracking Area (Only visible when active order id is tracked) -->
+    <section id="tracking-section" class="glass-panel" style="display: none; margin-bottom: 40px; animation: fadeUp 0.5s ease-out;">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <h2 style="font-size:1.8rem;">Live Order Tracking</h2>
+          <p style="color: var(--color-text-muted);" id="tracking-order-id">Order #0</p>
+        </div>
+        <div id="tracking-status-badge-container">
+          <!-- Badge loaded dynamically -->
+        </div>
+      </div>
+
+      <!-- Live Timeline -->
+      <div class="timeline-container">
+        <div class="timeline">
+          <div class="timeline-progress" id="timeline-progress-bar"></div>
+          
+          <div class="timeline-step" id="step-pending">
+            <div class="timeline-icon">📝</div>
+            <div class="timeline-label">Order Placed</div>
+          </div>
+          
+          <div class="timeline-step" id="step-preparing">
+            <div class="timeline-icon">🍳</div>
+            <div class="timeline-label">In Kitchen</div>
+          </div>
+          
+          <div class="timeline-step" id="step-delivering">
+            <div class="timeline-icon">🛵</div>
+            <div class="timeline-label">Out for Delivery</div>
+          </div>
+          
+          <div class="timeline-step" id="step-completed">
+            <div class="timeline-icon">🏠</div>
+            <div class="timeline-label">Arrived</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div>
+          <p style="font-size:0.85rem; color:var(--color-text-muted);">Delivery Destination:</p>
+          <p id="tracking-address" style="font-size:0.95rem; font-weight:500; margin-top:4px;">Loading address...</p>
+        </div>
+        
+        <!-- Simulate toggle for demonstration -->
+        <button class="btn btn-secondary btn-small" onclick="simulateTrackingStep()" id="simulate-btn">
+          Simulate Next Step (Demo)
+        </button>
+      </div>
+    </section>
+
+    <!-- Orders History list -->
+    <section>
+      <h2 style="font-size: 2rem;">Order History</h2>
+      <p style="color: var(--color-text-muted); margin-bottom: 20px;">Review your gourmet orders and track recent purchases.</p>
+      
+      <div id="orders-history-container" class="order-history-list">
+        <!-- Rendered by orders.js -->
+        <div class="glass-panel" style="text-align: center; padding: 40px;">
+          <p style="color: var(--color-text-muted);">Loading your order history...</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2 style="font-size: 1.3rem;">Shopping Cart</h2>
+      <button class="cart-drawer-close" id="cart-drawer-close">&times;</button>
+    </div>
+    <div class="cart-drawer-content" id="cart-drawer-items">
+      <!-- Populated by JS -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-totals">
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <span id="cart-drawer-subtotal">$0.00</span>
+        </div>
+      </div>
+      <a href="cart.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo logo" style="justify-content:center; margin-bottom:12px;">Feast<span>Dash</span></div>
+      <p>&copy; 2026 FeastDash. Crafted for Premium Dining.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/orders.js"></script>
+</body>
+</html>

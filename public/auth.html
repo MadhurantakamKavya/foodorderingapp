@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auth - FeastDash</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Feast<span>Dash</span></a>
+      <nav>
+        <ul id="nav-links">
+          <!-- Populated by JS -->
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="header-cart-btn" style="display: none;">
+          🛒 <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Auth Wrapper -->
+  <main class="container" style="flex:1; display:flex; align-items:center;">
+    <div class="auth-wrapper glass-panel">
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">Sign In</div>
+        <div class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">Register</div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form-panel active">
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-control" placeholder="enter your email..." required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">Sign In</button>
+        <p style="margin-top:20px; font-size:0.85rem; color:var(--color-text-muted); text-align:center;">
+          Demo Admin: <span style="color:var(--color-secondary);">admin@feastdash.com</span> / password: <span style="color:var(--color-secondary);">admin123</span>
+        </p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form-panel">
+        <div class="form-group">
+          <label for="register-name">Full Name</label>
+          <input type="text" id="register-name" class="form-control" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email Address</label>
+          <input type="email" id="register-email" class="form-control" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:10px;">Create Account</button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo logo" style="justify-content:center; margin-bottom:12px;">Feast<span>Dash</span></div>
+      <p>&copy; 2026 FeastDash. Crafted for Premium Dining.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

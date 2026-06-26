@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - FeastDash</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Feast<span>Dash</span></a>
+      <nav>
+        <ul id="nav-links">
+          <!-- Populated by JS -->
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <!-- Badge hidden or synced -->
+        <button class="cart-btn" id="header-cart-btn" style="display: none;">
+          🛒 <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Checkout Grid Container -->
+  <main class="container">
+    <div class="cart-page-grid">
+      
+      <!-- Left Column: Cart items table -->
+      <section class="glass-panel cart-table-card">
+        <h2>Your Gourmet Basket</h2>
+        <div id="cart-items-container">
+          <!-- Populated by cart.js -->
+        </div>
+      </section>
+
+      <!-- Right Column: Checkout details & receipt totals -->
+      <section class="glass-panel" style="padding: 24px;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 20px;">Checkout Details</h2>
+        
+        <form id="checkout-form" onsubmit="handleCheckout(event)">
+          <div class="form-group">
+            <label for="checkout-name">Recipient Name</label>
+            <input type="text" id="checkout-name" class="form-control" placeholder="Recipient's full name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="checkout-phone">Phone Number</label>
+            <input type="tel" id="checkout-phone" class="form-control" placeholder="+1 (555) 000-0000" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="checkout-address">Delivery Address</label>
+            <textarea id="checkout-address" class="form-control" placeholder="Complete street address, apartment number, and zip code" required></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="checkout-payment">Payment Method</label>
+            <select id="checkout-payment" class="form-control" required>
+              <option value="card">Credit / Debit Card (Simulated)</option>
+              <option value="cod">Cash on Delivery</option>
+            </select>
+          </div>
+
+          <!-- Coupon promo code section -->
+          <div class="form-group" style="margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px;">
+            <label for="checkout-coupon">Promo Code</label>
+            <div style="display:flex; gap:10px;">
+              <input type="text" id="checkout-coupon" class="form-control" placeholder="Try: FEAST10" style="text-transform:uppercase;">
+              <button type="button" class="btn btn-secondary" onclick="applyPromoCode()">Apply</button>
+            </div>
+            <p id="coupon-status" style="font-size: 0.8rem; margin-top: 6px;"></p>
+          </div>
+
+          <!-- Order Summary receipt -->
+          <div style="background: rgba(11, 15, 25, 0.4); border-radius:8px; padding: 16px; margin: 24px 0;">
+            <div class="cart-totals">
+              <div class="cart-total-row">
+                <span>Basket Subtotal</span>
+                <span id="summary-subtotal">$0.00</span>
+              </div>
+              <div class="cart-total-row">
+                <span>Delivery Fee</span>
+                <span id="summary-delivery">$3.99</span>
+              </div>
+              <div class="cart-total-row" id="promo-row" style="display: none; color: #22c55e;">
+                <span>Discount (10%)</span>
+                <span id="summary-discount">-$0.00</span>
+              </div>
+              <div class="cart-total-row">
+                <span>Estimated Tax (8%)</span>
+                <span id="summary-tax">$0.00</span>
+              </div>
+              <div class="cart-total-row grand-total" style="margin-top: 10px;">
+                <span>Grand Total</span>
+                <span id="summary-grand">$0.00</span>
+              </div>
+            </div>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%;" id="place-order-btn">Place Order</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo logo" style="justify-content:center; margin-bottom:12px;">Feast<span>Dash</span></div>
+      <p>&copy; 2026 FeastDash. Crafted for Premium Dining.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

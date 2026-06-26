@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FeastDash - Gourmet Food Delivered Instantly</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Feast<span>Dash</span></a>
+      <nav>
+        <ul id="nav-links">
+          <!-- Dynamically populated by main.js -->
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="header-cart-btn">
+          🛒 <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-subtitle">Gourmet Dining Experience</p>
+        <h1>Satisfy Your Cravings, <span>Instantly</span></h1>
+        <p class="hero-desc">Discover the finest culinary delights from your favorite local chef-driven kitchens, prepared fresh and delivered hot to your doorstep.</p>
+        
+        <form class="search-bar" onsubmit="event.preventDefault(); handleHeroSearch();">
+          <input type="text" id="hero-search-input" placeholder="Search for gourmet pizzas, juicy burgers, fresh salads...">
+          <button type="submit" class="btn btn-primary">Find Food</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Cuisines Section -->
+  <section class="container" style="padding: 60px 0;">
+    <h2 style="font-size: 2.2rem; margin-bottom: 8px; text-align: center;">Browse by Cuisine</h2>
+    <p style="text-align: center; color: var(--color-text-muted); margin-bottom: 40px;">Select a category to explore our gourmet menu choices</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px;">
+      <a href="menu.html?category=Pizza" class="glass-panel" style="text-align: center; padding: 24px; transition: var(--transition-fast); display: block;">
+        <span style="font-size: 3rem; display: block; margin-bottom: 12px;">🍕</span>
+        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Pizza</h3>
+        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Artisanal slices</p>
+      </a>
+      <a href="menu.html?category=Burgers" class="glass-panel" style="text-align: center; padding: 24px; transition: var(--transition-fast); display: block;">
+        <span style="font-size: 3rem; display: block; margin-bottom: 12px;">🍔</span>
+        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Burgers</h3>
+        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Crafted patties</p>
+      </a>
+      <a href="menu.html?category=Mains" class="glass-panel" style="text-align: center; padding: 24px; transition: var(--transition-fast); display: block;">
+        <span style="font-size: 3rem; display: block; margin-bottom: 12px;">🌮</span>
+        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Mains</h3>
+        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Gourmet platters</p>
+      </a>
+      <a href="menu.html?category=Sides" class="glass-panel" style="text-align: center; padding: 24px; transition: var(--transition-fast); display: block;">
+        <span style="font-size: 3rem; display: block; margin-bottom: 12px;">🍟</span>
+        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Sides</h3>
+        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Crispy additions</p>
+      </a>
+      <a href="menu.html?category=Desserts" class="glass-panel" style="text-align: center; padding: 24px; transition: var(--transition-fast); display: block;">
+        <span style="font-size: 3rem; display: block; margin-bottom: 12px;">🍰</span>
+        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Desserts</h3>
+        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Molten treats</p>
+      </a>
+      <a href="menu.html?category=Drinks" class="glass-panel" style="text-align: center; padding: 24px; transition: var(--transition-fast); display: block;">
+        <span style="font-size: 3rem; display: block; margin-bottom: 12px;">🍹</span>
+        <h3 style="font-size: 1.15rem; margin-bottom: 6px;">Drinks</h3>
+        <p style="font-size: 0.8rem; color: var(--color-text-muted);">Fresh mocktails</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Promotions / Features -->
+  <section style="background: var(--color-bg-alt); padding: 80px 0; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+    <div class="container">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center;">
+        <div>
+          <h2 style="font-size: 2.5rem; margin-bottom: 20px; line-height: 1.2;">Why Order From <span>FeastDash</span>?</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: 30px;">We partner exclusively with verified five-star local chefs to deliver high-quality dining, eliminating the generic fast food compromise.</p>
+          <a href="menu.html" class="btn btn-primary">Browse Full Menu</a>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div class="glass-panel" style="display: flex; gap: 20px; align-items: center;">
+            <div style="background: rgba(255, 107, 53, 0.15); color: var(--color-primary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">⚡</div>
+            <div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Ultra Fast Delivery</h3>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">Hot, premium food packed with thermal insulation and delivered under 30 minutes.</p>
+            </div>
+          </div>
+          
+          <div class="glass-panel" style="display: flex; gap: 20px; align-items: center;">
+            <div style="background: rgba(255, 182, 39, 0.15); color: var(--color-secondary); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">⭐</div>
+            <div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Gourmet Standards</h3>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">Every meal is prepared using farm-fresh organic ingredients by expert culinary creators.</p>
+            </div>
+          </div>
+
+          <div class="glass-panel" style="display: flex; gap: 20px; align-items: center;">
+            <div style="background: rgba(34, 197, 94, 0.15); color: #22c55e; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">📍</div>
+            <div>
+              <h3 style="font-size: 1.2rem; margin-bottom: 4px;">Live Timely Tracking</h3>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">Track the exact cooking progress and courier location with our live interactive timeline.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="container" style="padding: 80px 0;">
+    <h2 style="font-size: 2.2rem; margin-bottom: 8px; text-align: center;">Our Dining Critics</h2>
+    <p style="text-align: center; color: var(--color-text-muted); margin-bottom: 50px;">What our gourmet community has to say about the FeastDash experience</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+      <div class="glass-panel">
+        <div style="color: var(--color-secondary); margin-bottom: 16px;">★★★★★</div>
+        <p style="font-style: italic; color: var(--color-text-muted); margin-bottom: 20px;">"The Truffle Mushroom Pizza was spectacular. It arrived steaming hot, smelling like a fresh Italian pizzeria. Standard delivery apps can't match this level of gourmet quality!"</p>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="background: #ccc; width: 40px; height: 40px; border-radius: 50%; font-weight: 700; color: black; display: flex; align-items: center; justify-content: center; font-size: 0.85rem;">EH</div>
+          <div>
+            <h4 style="font-size: 0.95rem;">Eleanor Vance</h4>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted);">Verified Food Critic</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="glass-panel">
+        <div style="color: var(--color-secondary); margin-bottom: 16px;">★★★★★</div>
+        <p style="font-style: italic; color: var(--color-text-muted); margin-bottom: 20px;">"We ordered the Feast Signature Burger and the Crispy Tacos for a weekend family gathering. The custom packaging is elite, keeping the tacos perfectly dry and the fries crunchy!"</p>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <div style="background: #ccc; width: 40px; height: 40px; border-radius: 50%; font-weight: 700; color: black; display: flex; align-items: center; justify-content: center; font-size: 0.85rem;">ML</div>
+          <div>
+            <h4 style="font-size: 0.95rem;">Marcus Laurent</h4>
+            <p style="font-size: 0.75rem; color: var(--color-text-muted);">Food Blogger</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2 style="font-size: 1.3rem;">Shopping Cart</h2>
+      <button class="cart-drawer-close" id="cart-drawer-close">&times;</button>
+    </div>
+    <div class="cart-drawer-content" id="cart-drawer-items">
+      <!-- Populated by JS -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-totals">
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <span id="cart-drawer-subtotal">$0.00</span>
+        </div>
+      </div>
+      <a href="cart.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo logo" style="justify-content:center; margin-bottom:12px;">Feast<span>Dash</span></div>
+      <p style="margin-bottom:16px;">Connecting hungry food lovers with high-quality, chef-focused gourmet kitchens.</p>
+      <p>&copy; 2026 FeastDash. Crafted for Premium Dining.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleHeroSearch() {
+      const query = document.getElementById('hero-search-input').value.trim();
+      if (query) {
+        window.location.href = `menu.html?search=${encodeURIComponent(query)}`;
+      } else {
+        window.location.href = `menu.html`;
+      }
+    }
+  </script>
+</body>
+</html>

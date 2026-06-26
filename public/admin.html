@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef Dashboard - FeastDash</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Feast<span>Dash</span></a>
+      <nav>
+        <ul id="nav-links">
+          <!-- Populated by JS -->
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="header-cart-btn" style="display: none;">
+          🛒 <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Admin Grid Layout -->
+  <main class="container admin-grid">
+    
+    <!-- Left Column: Orders list management -->
+    <section class="glass-panel" style="padding: 24px;">
+      <h2>Active Orders</h2>
+      <p style="color: var(--color-text-muted); font-size:0.9rem; margin-bottom: 20px;">Manage restaurant kitchen orders and dispatch delivery.</p>
+      
+      <div style="overflow-x: auto;">
+        <table class="admin-list-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Order Summary</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="admin-orders-tbody">
+            <tr>
+              <td colspan="6" style="text-align: center; color: var(--color-text-muted);">Loading active orders...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Right Column: Menu Manager -->
+    <section style="display: flex; flex-direction: column; gap: 30px;">
+      
+      <!-- Add Food Form -->
+      <div class="glass-panel" style="padding: 24px;">
+        <h2>Create Menu Item</h2>
+        <p style="color: var(--color-text-muted); font-size:0.9rem; margin-bottom: 20px;">Add a new culinary masterpiece to the menu list.</p>
+        
+        <form id="add-dish-form" onsubmit="handleAddDish(event)">
+          <div class="form-group">
+            <label for="dish-name">Dish Name</label>
+            <input type="text" id="dish-name" class="form-control" placeholder="E.g. Pepperoni Feast" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="dish-description">Description</label>
+            <textarea id="dish-description" class="form-control" placeholder="E.g. Spicy pepperoni slices, premium mozzarella..." required></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dish-price">Price ($)</label>
+              <input type="number" id="dish-price" class="form-control" step="0.01" placeholder="14.99" required>
+            </div>
+            <div class="form-group">
+              <label for="dish-category">Category</label>
+              <select id="dish-category" class="form-control" required>
+                <option value="Pizza">Pizza</option>
+                <option value="Burgers">Burgers</option>
+                <option value="Mains">Mains</option>
+                <option value="Sides">Sides</option>
+                <option value="Desserts">Desserts</option>
+                <option value="Drinks">Drinks</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="dish-image">Image URL</label>
+            <input type="url" id="dish-image" class="form-control" placeholder="https://images.unsplash.com/photo-...">
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Add New Dish</button>
+        </form>
+      </div>
+
+      <!-- Dish List & Delete Manager -->
+      <div class="glass-panel" style="padding: 24px;">
+        <h2>Menu Manager</h2>
+        <p style="color: var(--color-text-muted); font-size:0.9rem; margin-bottom: 20px;">Review existing dishes and remove items from the card list.</p>
+        
+        <div style="max-height: 400px; overflow-y: auto;">
+          <table class="admin-list-table" style="font-size: 0.9rem;">
+            <thead>
+              <tr>
+                <th>Dish</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="admin-dishes-tbody">
+              <!-- Rendered by admin.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo logo" style="justify-content:center; margin-bottom:12px;">Feast<span>Dash</span></div>
+      <p>&copy; 2026 FeastDash. Crafted for Premium Dining.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

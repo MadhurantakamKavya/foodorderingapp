@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu - FeastDash</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <a href="index.html" class="logo">Feast<span>Dash</span></a>
+      <nav>
+        <ul id="nav-links">
+          <!-- Populated by JS -->
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button class="cart-btn" id="header-cart-btn">
+          🛒 <span class="cart-badge" id="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Section -->
+  <main class="container" style="padding: 40px 0;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px; flex-wrap:wrap; gap:16px;">
+      <div>
+        <h1 style="font-size: 2.5rem;">Explore Our <span>Gourmet Menu</span></h1>
+        <p style="color: var(--color-text-muted);">Fresh ingredients, curated recipes, crafted to perfection.</p>
+      </div>
+      
+      <!-- Inside Page Search -->
+      <div class="search-bar" style="max-width: 320px; width: 100%;">
+        <input type="text" id="menu-search-input" placeholder="Search menu..." oninput="handleSearch()">
+      </div>
+    </div>
+
+    <!-- Cuisines Category Tabs -->
+    <div class="categories-container" id="category-tabs-container">
+      <div class="category-tab active" data-category="All">All Items</div>
+      <div class="category-tab" data-category="Pizza">Pizza</div>
+      <div class="category-tab" data-category="Burgers">Burgers</div>
+      <div class="category-tab" data-category="Mains">Mains</div>
+      <div class="category-tab" data-category="Sides">Sides</div>
+      <div class="category-tab" data-category="Desserts">Desserts</div>
+      <div class="category-tab" data-category="Drinks">Drinks</div>
+    </div>
+
+    <!-- Food Grid Loading state / Container -->
+    <div class="food-grid" id="food-grid-container">
+      <!-- Cards rendered by menu.js -->
+      <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+        <p style="color: var(--color-text-muted);">Loading delicious dishes...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Slide-out Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h2 style="font-size: 1.3rem;">Shopping Cart</h2>
+      <button class="cart-drawer-close" id="cart-drawer-close">&times;</button>
+    </div>
+    <div class="cart-drawer-content" id="cart-drawer-items">
+      <!-- Populated by JS -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-totals">
+        <div class="cart-total-row">
+          <span>Subtotal</span>
+          <span id="cart-drawer-subtotal">$0.00</span>
+        </div>
+      </div>
+      <a href="cart.html" class="btn btn-primary" style="width: 100%;">Proceed to Checkout</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo logo" style="justify-content:center; margin-bottom:12px;">Feast<span>Dash</span></div>
+      <p>&copy; 2026 FeastDash. Crafted for Premium Dining.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/menu.js"></script>
+</body>
+</html>
