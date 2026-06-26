@@ -5,19 +5,19 @@
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --color-bg: #0b0f19;
+  --color-bg: #82476f;
   --color-bg-alt: #95066d;
-  --color-primary: #1227c386;
+  --color-primary: #050f5b86;
   /* Neon Coral Orange */
-  --color-primary-hover: #f83711;
-  --color-secondary: #27e9ff;
+  --color-primary-hover: #8d3636;
+  --color-secondary: #9e6e44;
   /* Amber Gold */
-  --color-text-main: #f3f4f6;
-  --color-text-muted: #9ca3af;
+  --color-text-main: #a51e96;
+  --color-text-muted: #9515b1;
 
   --glass-bg: rgba(22, 31, 48, 0.65);
-  --glass-bg-hover: rgba(30, 41, 59, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-bg-hover: rgba(15, 83, 194, 0.8);
+  --glass-border: rgba(111, 13, 13, 0.723);
   --glass-glow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 
   --radius-sm: 8px;
