@@ -4,7 +4,7 @@
   "description": "Premium glassmorphic food ordering web application.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node --watch server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
