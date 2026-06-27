@@ -19,6 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   renderCartPage();
+  
+  // Google Maps setup
+  initGmapsConfig();
+  initAutocomplete();
 });
 
 // Render full cart list
@@ -218,5 +222,75 @@ async function handleCheckout(e) {
     showToast(err.message, 'error');
     placeBtn.disabled = false;
     placeBtn.textContent = `Place Order • ${grandText}`;
+  }
+}
+
+// Google Maps API Key configuration setup
+function initGmapsConfig() {
+  const configBtn = document.getElementById('gmaps-config-btn');
+  if (configBtn) {
+    configBtn.addEventListener('click', () => {
+      const currentKey = localStorage.getItem('FEASTDASH_GMAPS_KEY') || '';
+      const newKey = prompt('Please enter your Google Maps API Key:', currentKey);
+      if (newKey !== null) {
+        localStorage.setItem('FEASTDASH_GMAPS_KEY', newKey.trim());
+        if (newKey.trim()) {
+          showToast('Google Maps API Key configured. Reloading page...', 'success');
+        } else {
+          showToast('API Key removed. Fallback mode active.', 'info');
+        }
+        setTimeout(() => location.reload(), 1500);
+      }
+    });
+  }
+}
+
+// Initialize Autocomplete
+function initAutocomplete() {
+  const addressInput = document.getElementById('checkout-address');
+  if (!addressInput) return;
+
+  const key = localStorage.getItem('FEASTDASH_GMAPS_KEY');
+  if (!key) return;
+
+  const statusEl = document.getElementById('autocomplete-status');
+  if (statusEl) statusEl.style.display = 'block';
+
+  // Load the script dynamically if not already loaded
+  if (window.google && window.google.maps && window.google.maps.places) {
+    setupAutocompleteField(addressInput);
+  } else {
+    const script = document.createElement('script');
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${key}&libraries=places`;
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      setupAutocompleteField(addressInput);
+    };
+    script.onerror = () => {
+      console.error("Failed to load Google Maps script.");
+      if (statusEl) {
+        statusEl.textContent = '❌ Google Places Autocomplete Load Failed';
+        statusEl.style.color = '#ef4444';
+      }
+    };
+    document.head.appendChild(script);
+  }
+}
+
+function setupAutocompleteField(input) {
+  try {
+    const autocomplete = new google.maps.places.Autocomplete(input, {
+      types: ['address']
+    });
+    
+    autocomplete.addListener('place_changed', () => {
+      const place = autocomplete.getPlace();
+      if (place && place.formatted_address) {
+        input.value = place.formatted_address;
+      }
+    });
+  } catch (err) {
+    console.error("Autocomplete setup failed:", err);
   }
 }

@@ -67,6 +67,19 @@
         </div>
       </div>
 
+      <!-- Interactive Delivery Map -->
+      <div id="map-section" style="margin-top: 24px; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <h4 style="font-size: 0.95rem; font-weight: 600;">Delivery Route Tracking</h4>
+          <button type="button" id="orders-gmaps-config" style="background: none; border: none; color: var(--color-primary); font-size: 0.75rem; cursor: pointer; text-decoration: underline; padding: 0;">
+            🔑 Configure Map API Key
+          </button>
+        </div>
+        <div id="delivery-map" style="height: 300px; width: 100%; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(11, 15, 25, 0.5); overflow: hidden; position: relative;">
+          <!-- Map will load here. If not, fallback custom canvas map will load. -->
+        </div>
+      </div>
+
       <div style="margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.05); padding-top:20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
         <div>
           <p style="font-size:0.85rem; color:var(--color-text-muted);">Delivery Destination:</p>

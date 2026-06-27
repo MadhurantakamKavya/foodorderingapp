@@ -54,8 +54,16 @@
           </div>
           
           <div class="form-group">
-            <label for="checkout-address">Delivery Address</label>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label for="checkout-address" style="margin-bottom: 0;">Delivery Address</label>
+              <button type="button" id="gmaps-config-btn" style="background: none; border: none; color: var(--color-primary); font-size: 0.75rem; cursor: pointer; text-decoration: underline; padding: 0;">
+                🔑 Configure Google Maps Autocomplete
+              </button>
+            </div>
             <textarea id="checkout-address" class="form-control" placeholder="Complete street address, apartment number, and zip code" required></textarea>
+            <div id="autocomplete-status" style="font-size: 0.75rem; color: #22c55e; margin-top: 4px; display: none;">
+              ⚡ Google Places Autocomplete Active
+            </div>
           </div>
           
           <div class="form-group">
