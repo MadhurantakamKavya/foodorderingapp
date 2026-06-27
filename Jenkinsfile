@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         CONTAINER_NAME = 'feastdash'
-        PORT = '3000'
+        PORT = '3050'
     }
 
     stages {
